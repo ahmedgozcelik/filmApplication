@@ -4,8 +4,24 @@
 
 //model-view-controller
 
+const state = {};
+
+const searchController = async () => {
+    const keyword = document.getElementById("txt-keyword").value;
+    if(keyword) {
+        state.search = new Search(keyword);
+        await state.search.getResult();
+        console.log(state.search.data);
+
+    }else {
+        alert("Anahtar kelimes girmelisiniz.")
+    }
+}
+
 import Search from './models/Search';
 
-const search = new Search('abc');
-console.log(search);
-search.getResult();
+document.getElementById("form-search").addEventListener("submit", function(e){
+    e.preventDefault();
+    searchController();
+    console.log("form submitted");
+})
