@@ -16,6 +16,8 @@ const searchController = async () => {
         state.search = new Search(keyword);
         await state.search.getResult();
 
+        searchView.clearInput();
+        searchView.clearResults();
         searchView.displayResults(state.search.data);
 
     }else {
