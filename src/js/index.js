@@ -36,6 +36,13 @@ elements.searchForm.addEventListener("submit", function(e){
 })
 
 //Movie Controller
-const movie = new Movie(252291);
-movie.getMovie();
-console.log(movie);
+const movieController = async () => {
+    const id = window.location.hash.replace('#', '');
+    if(id){
+        state.movie = new Movie(id);
+
+        await state.movie.getMovie();
+        console.log(state.movie)
+    }
+};
+window.addEventListener('hashchange', movieController);
