@@ -9,7 +9,7 @@ export const clearResults = () => {
 }
 
 
-export const displayResults = data => {
+export const displayResults = (keyword, data) => {
     data.results.forEach(movie => {
         const html = `
             <li class="media mb-3">
@@ -24,6 +24,7 @@ export const displayResults = data => {
             </li>
         `;
 
+        elements.movieListHeader.innerHTML = `${keyword} ile ilgili ${data.total_results} sonuç bulundu.`;
         elements.movieListContainer.classList.add('d-block');    
         elements.movieList.insertAdjacentHTML('beforeend', html);
     })
