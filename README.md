@@ -3,6 +3,10 @@
 ![Ekran Görüntüsü (221)](https://user-images.githubusercontent.com/104251360/214008712-9fde0b1a-472f-45b9-9afd-10ba90e8edf8.png)
 ![Ekran Görüntüsü (222)](https://user-images.githubusercontent.com/104251360/214008718-53212209-5f47-4e5b-837f-1adbf401d047.png)
 
-####
-Kullandığım API'ler:
- -https://developers.themoviedb.org/3/getting-started/introduction
+> Uygulamayı çalıştırın: 
+ ```shell
+ npm run start
+ ```
+
+#### Kullandığım API:
+- https://developers.themoviedb.org/3/getting-started/introduction
