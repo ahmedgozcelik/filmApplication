@@ -4,45 +4,51 @@
 
 //model-view-controller
 import Search from './models/Search';
-import { elements } from './Base';
+import {elements} from './base';
 import * as searchView from './views/searchView';
+import * as movieView from './views/movieView';
 import { Movie } from './models/Movie';
-
 
 const state = {};
 
-//Search Controller
+// Search Controller
+
 const searchController = async () => {
     const keyword = elements.searchInput.value;
-    if(keyword) {
+
+    if (keyword) {
         state.search = new Search(keyword);
-        await state.search.getResult();
+
+        await state.search.getResults();
 
         searchView.clearInput();
         searchView.clearResults();
         searchView.displayResults(state.search.data);
 
     }else {
-        alert("Anahtar kelimes girmelisiniz.")
+        alert('anahtar kelime girmelisiniz');
     }
 }
 
-
-
-elements.searchForm.addEventListener("submit", function(e){
+elements.searchForm.addEventListener('submit', function(e) {
     e.preventDefault();
     searchController();
     console.log("form submitted");
-})
+});
 
-//Movie Controller
+// Movie Controller
+
 const movieController = async () => {
-    const id = window.location.hash.replace('#', '');
-    if(id){
-        state.movie = new Movie(id);
-
+    const id = window.location.hash.replace('#','');
+    if(id) {
+        state.movie= new Movie(id);
+        
         await state.movie.getMovie();
-        console.log(state.movie)
+
+        movieView.displayMovie(state.movie.data);
+        movieView.backToTop();
+        
     }
 };
+
 window.addEventListener('hashchange', movieController);
